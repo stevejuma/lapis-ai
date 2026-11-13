@@ -132,13 +132,14 @@ test("github_lookup_errors_fail_closed_without_disclosing_credentials", async ()
   );
 });
 test("automation_skips_only_spec_first_and_preserves_canonical_lanes", () => {
+  const scenarioEnv = { ...process.env, CI: "false" };
   const script =
     'const {default:c}=await import("./spec-validator.config.mjs"); console.log(JSON.stringify(c));';
   const load = (kind) =>
     JSON.parse(
       execFileSync(process.execPath, ["--input-type=module", "-e", script], {
         encoding: "utf8",
-        env: { ...process.env, LAPIS_AI_CHECK_AUTOMATION: kind },
+        env: { ...scenarioEnv, LAPIS_AI_CHECK_AUTOMATION: kind },
       }),
     );
   const ordinary = load("");
@@ -153,14 +154,14 @@ test("automation_skips_only_spec_first_and_preserves_canonical_lanes", () => {
       );
     const result = spawnSync("pnpm", ["spec:first", "--file", "Cargo.lock"], {
       encoding: "utf8",
-      env: { ...process.env, LAPIS_AI_CHECK_AUTOMATION: kind },
+      env: { ...scenarioEnv, LAPIS_AI_CHECK_AUTOMATION: kind },
     });
     assert.equal(result.status, 0, result.stdout + result.stderr);
   }
   assert.deepEqual(load("unknown"), ordinary);
   const result = spawnSync("pnpm", ["spec:first", "--file", "Cargo.lock"], {
     encoding: "utf8",
-    env: { ...process.env, LAPIS_AI_CHECK_AUTOMATION: "" },
+    env: { ...scenarioEnv, LAPIS_AI_CHECK_AUTOMATION: "" },
   });
   assert.equal(result.status, 1, result.stdout + result.stderr);
 });

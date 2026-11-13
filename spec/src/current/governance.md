@@ -159,3 +159,8 @@ Evidence: [CI Cargo reuse](../history/2026-10-28-ci-cargo-reuse.md),
 [Release Linux system libraries](../history/2026-10-28-release-linux-libraries.md),
 [Git crate consumption](../history/2026-10-29-git-crate-consumption.md),
 [CI single Cargo compile](../history/2026-10-29-ci-cargo-once.md).
+
+CI automation configuration scenarios MUST control their subprocess CI flag
+independently of the parent workflow event. A trusted dependency-bot workflow
+must not convert the ordinary-case spec-first assertion into an exemption; the
+real workflow exemption and all functional lanes remain unchanged.

@@ -35,6 +35,10 @@ shared header admission changes in `lapis-ai-capture`; Notes adapts its existing
 native importer. Exact source/consumer checks remain separate from the user’s
 deferred wider qualification. Original M0–M5 gates and release authority stay.
 
+The spec-validator 0.2 development-tool intake uses the published Node-only
+CLI through the existing portable lane commands. Runtime, native qualification,
+source ownership and M0–M5 milestone contracts remain unchanged.
+
 ## Requirements
 
 | ID          | Requirement                                                                                                                                                                                                                 |

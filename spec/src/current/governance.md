@@ -35,6 +35,10 @@ shared header admission changes in `lapis-ai-capture`; Notes adapts its existing
 native importer. Exact source/consumer checks remain separate from the user’s
 deferred wider qualification. Original M0–M5 gates and release authority stay.
 
+The spec-validator 0.2 development-tool intake uses the published Node-only
+CLI through the existing portable lane commands. Runtime, native qualification,
+source ownership and M0–M5 milestone contracts remain unchanged.
+
 ## Requirements
 
 | ID          | Requirement                                                                                                                                                                                                                 |
@@ -155,3 +159,8 @@ Evidence: [CI Cargo reuse](../history/2026-10-28-ci-cargo-reuse.md),
 [Release Linux system libraries](../history/2026-10-28-release-linux-libraries.md),
 [Git crate consumption](../history/2026-10-29-git-crate-consumption.md),
 [CI single Cargo compile](../history/2026-10-29-ci-cargo-once.md).
+
+CI automation configuration scenarios MUST control their subprocess CI flag
+independently of the parent workflow event. A trusted dependency-bot workflow
+must not convert the ordinary-case spec-first assertion into an exemption; the
+real workflow exemption and all functional lanes remain unchanged.
